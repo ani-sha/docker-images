@@ -1,6 +1,5 @@
 name: Build Container Images as Anonymous
-on:
-  pull_request:
+on: [ push ]
 
 jobs:
   build:
@@ -12,4 +11,5 @@ jobs:
       - name: Build Scripts
         run: shellcheck build-*.sh
       - name: Run Scripts
-        run: ./build-all.sh
+        run: |
+          ./build-tools.sh latest
