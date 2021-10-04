@@ -24,6 +24,8 @@ RUN gem install bundler -v "~>1.0" \
 
 #Copy over the gemfile to a temporary directory and run the install command. 
 WORKDIR /tmp
+RUN curl https://raw.githubusercontent.com/debezium/debezium.github.io/develop/Gemfile >> Gemfile && \
+    curl https://raw.githubusercontent.com/debezium/debezium.github.io/develop/Gemfile.lock >> Gemfile.lock
 ADD Gemfile Gemfile
 ADD Gemfile.lock Gemfile.lock 
 RUN bundle install 
