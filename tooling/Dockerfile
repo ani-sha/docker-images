@@ -15,9 +15,10 @@ COPY --from=kcat /kcat /usr/bin/kafkacat
 RUN ln -s /usr/bin/kcat/ /usr/bin/kafkacat/
 
 FROM fedora:34
-RUN curl -SL https://github.com/kcctl/kcctl/releases/download/1.0.0-early-access/kcctl-1.0.0-early-access-linux-x86_64.tar.gz | tar -zxC /usr/bin/ && \
-    cd /usr/bin/kcctl-1.0.0-SNAPSHOT-linux-x86_64 && \
-    . kcctl_completion
+RUN curl -SL https://github.com/kcctl/kcctl/releases/download/1.0.0-early-access/kcctl-1.0.0-early-access-linux-x86_64.tar.gz | tar -zx && \
+    mv kcctl-1.0.0-SNAPSHOT-linux-x86_64/bin/kcctl /usr/bin && \
+    . kcctl-1.0.0-SNAPSHOT-linux-x86_64/kcctl_completion && \
+    rm -r kcctl-1.0.0-SNAPSHOT-linux-x86_64
 
 RUN mkdir licenses
 

@@ -6,7 +6,7 @@ if [[ -z "$TAG" ]]; then
     TAG="$1"
 fi
 
-DEBEZIUM_TOOLS="tooling"
+DEBEZIUM_TOOLS="tooling website-builder"
 
 for TOOL in $DEBEZIUM_TOOLS; do
   echo ""
